@@ -12,13 +12,17 @@ class SimpleLRUTimeEvictCacheTest {
   def testCache(): Unit = {
     val s = CachedMapFooService()
     s.set("1", "10")
-    s.set("2", "20")
-    s.set("3", "30")
 
-    val value1 = s.get("1")
+    val value_1 = s.get("1")
     s.set("1", "40")
-    val value2 = s.get("1")
+    val value_2 = s.get("1")
 
-    assert(value1 equals value2)
+    assert(value_1 equals value_2)
+
+    Thread.sleep(4000)
+
+    val value_3 = s.get("1")
+
+    assert(!(value_1 equals value_3))
   }
 }

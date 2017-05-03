@@ -7,6 +7,7 @@ import ltp.repository.SimpleLRUTimeEvictCache
  **/
 trait FooService {
   def set(key: String, value: String)
+
   def get(key: String): String
 }
 
@@ -23,4 +24,6 @@ case class CachedMapFooService() extends MapFooService with SimpleLRUTimeEvictCa
   override protected def loadData(k: String): String = store(k)
 
   override def get(key: String) = getCached(key)
+
+  override def refreshAfterWrite = Some(2L, SECONDS)
 }

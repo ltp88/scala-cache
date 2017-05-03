@@ -18,6 +18,11 @@ extends `SimpleLRUTimeEvictCache` and override function `loadData`
     override protected def expiredAfterAccess: Option[(Long, TimeUnit)] = Some(5L, TimeUnit.MINUTES)
 ```
 
+### Setting refresh
+``` scala
+    override def refreshAfterWrite: Option[(Long, TimeUnit)] = Some(2L, SECONDS)
+```
+
 ### Removal listening:
 ``` scala
     override protected def removal(notification: RemovalNotification[K, V]) = {

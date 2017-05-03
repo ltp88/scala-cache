@@ -70,4 +70,13 @@ trait SimpleLRUTimeEvictCache[K <: Object, V <: Object] {
 
   /** Public function */
   def getCached(k: K) = getData(k)
+
+  /** TimeUnit */
+  protected def NANOSECONDS = TimeUnit.NANOSECONDS
+  protected def MICROSECONDS = TimeUnit.MICROSECONDS
+  protected def MILLISECONDS = TimeUnit.MILLISECONDS
+  protected def SECONDS = TimeUnit.SECONDS
+  protected def MINUTES = TimeUnit.MINUTES
+  protected def HOURS = TimeUnit.HOURS
+  protected def DAYS = TimeUnit.DAYS
 }
